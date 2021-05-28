@@ -30,13 +30,18 @@ session_start();//нужно прописывать в начале каждог
     </div>
     <?php
         }
+        if(!isset($_SESSION["name"]))
+        {
     ?>
-    <div class="nav_button">
-        <a href="?tab=login">Login</a>
-    </div>
-    <div class="nav_button">
-        <a href="?tab=registration">Sign in</a>
-    </div>
+        <div class="nav_button">
+            <a href="?tab=login">Login</a>
+        </div>
+        <div class="nav_button">
+           <a href="?tab=registration">Sign in</a>
+        </div>
+    <?php
+       }
+    ?>
     <div>
         <?php
         include "input_login.php";

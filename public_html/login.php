@@ -23,12 +23,12 @@
       <label for="formPassword" class="formLabel"></label>
       <input id="formPassword"  type="password" name="password" class="form_input req" placeholder="Password">
     </div>
-    <div class="form_item">
+<!--    <div class="form_item">
       <div class="checkbox">
         <input id="formAgreement" required  type="checkbox" name="agreement" class="checkbox_input req">
         <label for="formAgreement" class="checkbox_label">I accept the <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a> </label>
       </div>
-    </div>
+    </div> -->
     <button type="submit" class="form_button">Login</button>
     <button type="submit" class="form_button">Register Now</button>
   </form>

@@ -25,10 +25,11 @@ if (isset($_GET['username']) && isset($_GET['password'])) {
 
     $_SESSION["name"] = $username;
     $_SESSION["password"] = $log_password;
-    var_dump($_SESSION["name"]);
+    header('location:/index.php');
+    /*var_dump($_SESSION["name"]);
     var_dump($_SESSION["password"]);
     echo "Данные сохранены в сессии";
-
+*/
 
 //    $link->close();
     // закрываем подключение

@@ -32,6 +32,7 @@ if(isset($_POST['phone_number']) && isset($_POST['email']) &&
 
     // закрываем подключение
     mysqli_close($l);
+    header('location:/index.php');
 }
 else
 {

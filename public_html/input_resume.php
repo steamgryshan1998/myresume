@@ -67,6 +67,10 @@
                 </textarea>
             </div>
         </div>
+        <?php
+            if(isset($_SESSION["name"]))
+            {
+        ?>
         <form action="editable_settings.php" method="post">
         <div class = "row">
             <div class="block_label">
@@ -78,6 +82,9 @@
             </div>
         </div>
         </form>
+        <?php
+            }
+        ?>
 <!--        <form action="default_settings.php" method="post">
             <div class = "row">
                 <div class="block_label">

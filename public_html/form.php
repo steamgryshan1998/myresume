@@ -22,7 +22,7 @@
                 <label for="email">Email</label>
             </div>
             <div class = "block_input">
-                <input type="email" id="email" name="email"/>
+                <input type="email" id="email" name="email" required/>
             </div>
         </div>
         <div class = "row">
@@ -38,8 +38,8 @@
                 <label id="gender_name">Gender</label>
             </div>
             <div class = "block_input">
-                <input type="radio" id="gender_name" value="man" checked name="gender"/>male
-                <input type="radio" id="gender_name" value="man" checked name="gender"/>female
+                <input type="radio" id="check1" class="gender_name" value="man" checked name="gender"/>male
+                <input type="radio" id="check2" class="gender_name" value="man" checked name="gender"/>female
             </div>
         </div>
         <div class = "row">
@@ -98,7 +98,7 @@
                 <label></label>
             </div>
             <div class = "block_input">
-                <input type="checkbox" name="agreement"/>Agreement
+                <input type="checkbox" name="agreement" required/>Agreement
             </div>
         </div>
         <div class = "row">
@@ -106,28 +106,15 @@
                 <label></label>
             </div>
             <div class = "block_input">
-                <input class="blue_button" name="print" type="button" value="Отправить" />
-                <button type="submit">Save</button>
+                <button class="blue_button" id="blue_button" name="print">Отправить</button>
+                <button id="reset" type="reset">Reset</button>
             </div>
         </div>
     </form>
 </div>
-<!--<div id="printBlock">
-    <h5>Info</h5>
+<div id="print_block">
 
-<script>
-    function printForm(e){
-        var Name_val = document.question_form.name;
-        var val = Name_val.value;
-        var printBlock = document.getElementById("printBlock");
-        var pElement = document.createElement("p");
-        pElement.textContent = val;
-        printBlock.appendChild(pElement);
-    }
-    var printButton = document.question_form.print;
-    printButton.addEventListener("click", printForm);
-</script>
 </div>
--->
+<script src="form.js"></script>
 </body>
 </html>

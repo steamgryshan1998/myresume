@@ -25,13 +25,13 @@ if(isset($_POST['firstName']) && isset($_POST['lastName']) &&
 
     // выполняем запрос
     $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
-    if($result)
+/*    if($result)
     {
         echo "<span style='color:blue;'>Данные добавлены</span>";
-    }
-
+    }*/
     // закрываем подключение
     mysqli_close($link);
+    header('location:/index.php');
 }
 else
 {
