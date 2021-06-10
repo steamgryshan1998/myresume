@@ -1,40 +1,34 @@
 <?php
-
-//echo "321";
-require_once 'connection.php';
-if (isset($_GET['username']) && isset($_GET['password'])) {
-    //   echo "true";
-    $username = $_GET['username'];
-    $log_password = $_GET['password'];
+    $l = require_once 'connection.php';
+    $data = json_decode(file_get_contents('php://input'), true);
+    $username = $data['username'];
+    $log_password = $data['password'];
     $log_password = md5($log_password);
-    // подключаемся к серверу
-    $link = mysqli_connect($host, $user, $password, $database)
-    or die("Ошибка " . mysqli_error($link));
+    $check_user = mysqli_query($l, "SELECT * FROM users WHERE name = '$username' AND password = '$log_password'");
+    if(mysqli_num_rows($check_user) > 0) {
+        $user = mysqli_fetch_assoc($check_user);
+        $_SESSION['user'] = [
+            "id" => $user['id'],
+            "name" => $user['name'],
+            "password" => $user['password']
+        ];
 
-    $result_1=$link->query("SELECT * FROM users WHERE `name`='$username' AND `password`='$log_password'");
-
-    $username=$result_1->fetch_assoc();
-//    var_dump($username);
-    if(count($username)==0)
-    {
-        header('location:../pages/registration.php');
+        $data = [
+            'success' => true,
+            'user' => [
+                "id" => $user['id'],
+                "name" => $user['name'],
+                "password" => $user['password']
+            ]
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        $_SESSION['name'] = $username;
         exit();
+
+    } else {
+        $data = [
+            'success' => false,
+        ];
     }
-    //   echo "lol";
-    session_start();
-
-    $_SESSION["name"] = $username;
-    $_SESSION["password"] = $log_password;
-    header('location:/index.php');
-    /*var_dump($_SESSION["name"]);
-    var_dump($_SESSION["password"]);
-    echo "Данные сохранены в сессии";
-*/
-
-//    $link->close();
-    // закрываем подключение
-    mysqli_close($link);
-} /*else {
-    //echo "Введенные данные некорректны";
-}*/
 

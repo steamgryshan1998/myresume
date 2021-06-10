@@ -5,15 +5,6 @@ if(!isset($_SESSION["name"]))
 }
 include "functionality/editable_settings.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Resume input</title>
-    <link rel="stylesheet" href="../css/form.css">
-    <link rel="stylesheet" href="../css/menu.css">
-</head>
-<body>
 <div class = "container">
 
 
@@ -81,24 +72,12 @@ include "functionality/editable_settings.php";
             </div>
             <div class = "block_input">
                 <button type="submit" class="blue_button">Отправить</button><!-- для отправки в бд нужна кнопка через button а не через input-->
-<!--                <button type="submit">Save</button>  -->
             </div>
         </div>
         </form>
         <?php
             }
         ?>
-<!--        <form action="default_settings.php" method="post">
-            <div class = "row">
-                <div class="block_label">
-                    <label></label>
-                </div>
-                <div class = "block_input">
-                    <button type="submit" class="blue_button">Default</button>   для отправки в бд нужна кнопка через button а не через input                    <button type="submit">Save</button>
-                </div>
-            </div>
-
-                 </form> -->
     </form>
     <form action="../functionality/dump_db.php" method="post">
         <div class = "row">
@@ -107,33 +86,12 @@ include "functionality/editable_settings.php";
             </div>
             <div class = "block_input">
                 <button type="submit" class="blue_button">Бэкап</button><!-- для отправки в бд нужна кнопка через button а не через input-->
-                <!--                <button type="submit">Save</button>  -->
             </div>
         </div>
     </form>
     <form action="../functionality/download_dump.php" method="post">
         <button type="submit" class="blue_button">Загрузить Дамп</button><!-- для отправки в бд нужна кнопка через button а не через input-->
-        <!--                <button type="submit">Save</button>  -->
     </form>
 
 </div>
 
-<!--<div id="printBlock">
-    <h5>Info</h5>
-
-<script>
-    function printForm(e){
-        var Name_val = document.question_form.name;
-        var val = Name_val.value;
-        var printBlock = document.getElementById("printBlock");
-        var pElement = document.createElement("p");
-        pElement.textContent = val;
-        printBlock.appendChild(pElement);
-    }
-    var printButton = document.question_form.print;
-    printButton.addEventListener("click", printForm);
-</script>
-</div>
--->
-</body>
-</html>

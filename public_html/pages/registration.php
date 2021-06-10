@@ -4,18 +4,9 @@ if(isset($_SESSION["name"]))
     header('location:/index.php');
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration form</title>
-    <link rel="stylesheet" href="../css/registration.css">
-    <link rel="stylesheet" href="../css/menu.css">
-</head>
-<body>
 <div class="form">
     <div class="form_body">
-    <form action="../functionality/input.php" method="post">
+    <form action="#" id="form_reg" method="post">
         <div class="title">
             <div class="line"><hr size="4"></div>
             <h1 class="formName">Register</h1>
@@ -51,8 +42,11 @@ if(isset($_SESSION["name"]))
                 <label for="formAgreement" class="checkbox_label">I accept the <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a> </label>
             </div>
         </div>
-        <button type="submit" class="form_button">Register Now</button>
+        <button type="button" id="button_reg" class="form_button">Register Now</button>
     </form>
+    <div id="error">
+
+    </div>
 </div>
 
     <div class="after_container">
@@ -60,5 +54,5 @@ if(isset($_SESSION["name"]))
 </div>
 </div>
 
-</body>
-</html>
+<script src="../js/registration_jquery.js"></script>
+

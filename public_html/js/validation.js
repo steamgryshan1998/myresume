@@ -5,7 +5,6 @@ let password = document.getElementById('password');
 let birth = document.getElementById('birth');
 let agreement = document.getElementById('agreement')
 let today = new Date();
-//let birthdate = new Date(birth.value);
 
 
 form.addEventListener('submit', (e) => {
@@ -24,8 +23,6 @@ function checkInputs() {
     let name_value = username.value;
     let email_value = email.value.trim();
     let password_value = password.value.trim();
-//    let birthdate = birth.value; // виден при вызове функции
-//    console.log(birthdate)
 
     if (name_value === '') {
         setErrorFor(username, 'Your name cannot be empty')
@@ -55,7 +52,6 @@ function checkInputs() {
         setSuccessFor(password);
     }
 
-//    console.log(today.getFullYear())
     let b = new Date(birth.value);
     console.log(today.getFullYear(), b.getFullYear())// дебаггинг
     if((today.getFullYear() - 150) > b.getFullYear())

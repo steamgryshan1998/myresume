@@ -1,40 +1,38 @@
-jQuery.validator.addMethod("noSpace", function(value, element) {
-    return value == '' || value.trim().length != 0;
-}, "No space please and don't leave it empty");
-let $LoginForm = $('#login');
-if($LoginForm.length){
-    $LoginForm.validate({
-        rules:{
-            username: {
-                required: true,
-                alphanumeric: true
-            },
-            password: {
-                required: true
-            },
-        },
-        messages:{
-            username: {
-                required: 'Please enter username!'
-            },
-            password: {
-                required: 'Please enter password!'
-            },
-        },
-        errorPlacement: function(error, element)
-        {
-            if (element.is(":radio"))
-            {
-                error.appendTo(element.parents('.gender'));
-            }
-            else if(element.is(":checkbox")){
-                error.appendTo(element.parents('.hobbies'));
-            }
-            else
-            {
-                error.insertAfter( element );
-            }
+$(document).ready( function (e) {
+    $('#login').on("click",function(event) {
+        event.preventDefault();
+        let name = $('#username').val();
+        let password = $('#formPassword').val();
+        if((name === "") || (password === "")) {
+            $("#error").text('all fields must be filled');
+            return false;
+        } else {
+            $("error").text("You are logged in");
 
         }
-    });
-}
+        let data = JSON.stringify({'username': name, 'password': password});
+        $.ajax({
+            url: '/?action=input_login',
+            type: 'POST',
+            data: data,
+            contentType: "application/json;",
+            dataType: 'json',
+            success: function(data) {
+                setTimeout(function(){
+                    window.location.href = '../index.php';
+                }, 2000);
+                console.log(data)
+                $('#error').text('You are logged in');
+
+            },
+            error: function() {
+                console.error(data)
+                $('#error').text('None');
+            }
+
+        })
+
+
+    })
+
+})

@@ -45,15 +45,12 @@ session_start();//нужно прописывать в начале каждог
     <div>
         <?php
         include "../functionality/input_login.php";
-        //var_dump($_SESSION["name"]);
-        //echo $username;
         $array = $_SESSION["name"];
-//        echo $array["name"];
         if(isset($_SESSION["name"])) {
         ?>
             Welcome <?php echo $array["name"]; ?>. Click here to <a href="../functionality/logout.php">Logout.</a>
             <?php
-            }else echo "<h5>Please login first .</h5>";
+            }else echo "<h5>Please login first!</h5>";
             ?>
     </div>
     </div>

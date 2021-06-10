@@ -5,15 +5,6 @@ if(!isset($_SESSION["name"]))
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Form</title>
-    <link rel="stylesheet" href="../css/form.css">
-    <link rel="stylesheet" href="../css/menu.css">
-</head>
-<body>
 <div class = "container">
     <form name="question_form" method="get" id="formElem" >
         <div class = "row">
@@ -66,15 +57,7 @@ if(!isset($_SESSION["name"]))
                 <label for="contacts">Contacts</label>
             </div>
             <div class = "block_input" id="contact">
-                <!--<select id="socials" name="socials" onchange="check(this);">
-                    <option value="insta">Instagram</option>
-                    <option value="twitter">Twitter</option>
-                    <option value="linkedin">LinkedIn</option>
-                    <option value="telegram">Telegram</option>
-                    <option value="other">Other</option>
-                </select> -->
-    <!--             <input type="text" id="contacts" name="contacts"/>  -->
-                <button class="button_without_border" id="Reset" type="button">Delete</button>
+               <button class="button_without_border" id="Reset" type="button">Delete</button>
                 <button id="save" class="blue_button" type="submit">Save</button>
                 <input type="button" value="Add new" id="contact_button" onclick="addItems();"><br>
             </div>
@@ -126,8 +109,5 @@ if(!isset($_SESSION["name"]))
 </div>
 <div id="print_block">
 </div>
-<!-- <script src="../js/form.js"></script> -->
 <script src="../js/validation.js"></script>
 <script src="../js/add.js"></script>
-</body>
-</html>

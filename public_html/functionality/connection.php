@@ -1,5 +1,6 @@
 <?php
-$host = 'localhost'; // адрес сервера
-$database = 'my_db'; // имя базы данных
-$user = 'admin'; // имя пользователя
-$password = 'password'; // пароль
+$l = mysqli_connect('localhost', 'admin', 'password', 'my_db');
+if (!$l) {
+    die('error connect to db');
+}
+return $l;

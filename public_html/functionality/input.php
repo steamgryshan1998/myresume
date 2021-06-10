@@ -1,60 +1,35 @@
 <?php
-//echo "321";
-require_once 'connection.php';
-if(isset($_POST['firstName']) && isset($_POST['lastName']) &&
-    isset($_POST['email']) && isset($_POST['password']) && isset($_POST['conf_password']))
-{
-    $firstname = $_POST['firstName'];
-    $lastname = $_POST['lastName'];
-    $email = $_POST['email'];
-    $reg_password = $_POST['password'];
-    $conf_password = $_POST['conf_password'];
-//    echo $firstname." ".$lastname." ".$email." ".$reg_password." ".$conf_password;
+$l = require_once 'connection.php';
+    $data = json_decode(file_get_contents('php://input'), true);
+    $firstname = $data['firstName'];
+    $lastname = $data['lastName'];
+    $email = $data['email'];
+    $reg_password = $data['password'];
+    $conf_password = $data['conf_password'];
     if ($reg_password != $conf_password){
         echo "Password not confirmed!";
         exit();
     }
     $reg_password = md5($reg_password);
     $full_name = $firstname.$lastname;
-    // подключаемся к серверу
-    $link = mysqli_connect($host, $user, $password, $database)
-    or die("Ошибка " . mysqli_error($link));
+    $check_user = mysqli_query($l, "INSERT INTO users VALUES(NULL, '$full_name','$email','$reg_password')");
 
-    // создание строки запроса
-    $query ="INSERT INTO users VALUES(NULL, '$full_name','$email','$reg_password')";
-
-    // выполняем запрос
-    $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
-/*    if($result)
-    {
-        echo "<span style='color:blue;'>Данные добавлены</span>";
-    }*/
-    // закрываем подключение
-    session_start();
-
+    $_SESSION['user'] = [
+       "id" => $user['id'],
+       "name" => $user['name'],
+       "password" => $user['password']
+    ];
+    $data = [
+      'success' => true,
+      'user' => [
+           "id" => $user['id'],
+           "name" => $user['name'],
+           "password" => $user['password']
+      ]
+    ];
+    header('Content-Type: application/json');
+    echo json_encode($data);
     $_SESSION["name"] = $full_name;
-    $_SESSION["password"] = $reg_password;
-    header('location:/index.php');
+    exit();
 
-    mysqli_close($link);
-//    header('location:/index.php');
-}
-else
-{
-    echo "Введенные данные некорректны";
-}
-/*//$firstname = $lastname = $email = $password = $conf_password = "";
-//    if($_SERVER["REQUEST_METHOD"] == 'GET'){
-$firstname = $_GET('firstName');
-$lastname = $_GET('lastName');
-$email = $_GET('email');
-$password = $_GET('password');
-$conf_password = $_GET('conf_password');
-//    }  else {
-echo "NULL";
-//    }
-echo "lol";
-echo $firstname." ".$lastname." ".$email." ".$password." ".$conf_password;
-/*
-*/
 

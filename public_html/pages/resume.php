@@ -1,9 +1,5 @@
 <?php
-    session_start();
     require_once 'functionality/connection.php';
-    // подключаемся к серверу
-    $l = mysqli_connect($host, $user, $password, $database)
-    or die("Ошибка " . mysqli_error($l));
     $query = "SELECT * FROM resume_data WHERE type = 'editable'";
     $result= mysqli_query($l, $query) or die("Ошибка " . mysqli_error($l));
     $content = mysqli_fetch_array($result);
@@ -15,17 +11,6 @@
 $str = $content['skills'];
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/menu.css">
-</head>
-<body>
 <div class="wrapper">
     <div class="sidebar">
         <div class="sidebar_photo">
@@ -51,15 +36,6 @@ $str = $content['skills'];
             <div class="sidebar_content_columns">
                 <p class="nameOfColumn">SKILLS</p>
                 <div class="sidebar_content">
- <!--                   <ul>
-                        <li>Communication skills</li>
-                        <li>Problem solving</li>
-                        <li>Teamwork</li>
-                        <li>Research</li>
-                        <li>Creativity</li>
-                        <li>Accept criticism</li>
-                        <li>Be open to change</li>
-                    </ul>-->
                     <?php
                         $skills = explode(" ", $str);
                         for($i = 0; $i < count($skills); $i++) {
@@ -115,5 +91,3 @@ $str = $content['skills'];
                 commodi nobis quod voluptatibus aliquam earum ut.</p>
     </div>
 </div>
-</body>
-</html>
