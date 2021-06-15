@@ -31,21 +31,26 @@ function addItems() {
     input1.style.visibility = 'hidden';
     let input2 = document.createElement('input');
     input2.name = 'staticInput';
+    let reset = document.createElement('button');
+    reset.textContent = 'Delete';
+    reset.setAttribute('type', 'button');
+    reset.setAttribute('class', 'button_without_border');
     let br = document.createElement('br');
 
 
     output.insertBefore(br, output.firstChild);
+    output.insertBefore(reset, output.firstChild);
     output.insertBefore(input1, output.firstChild);
     output.insertBefore(input2, output.firstChild);
     output.insertBefore(select, output.firstChild);
 
-    let reset = document.getElementById('Reset')
 
     reset.onclick = removeItems;
     function removeItems(){
         select.remove();
         input1.remove();
         input2.remove();
+        reset.remove();
         br.remove();
         /*        let removeBr = document.getElementById('br');
         removeBr.remove();

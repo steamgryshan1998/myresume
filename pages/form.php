@@ -57,7 +57,7 @@ if(!isset($_SESSION["name"]))
                 <label for="contacts">Contacts</label>
             </div>
             <div class = "block_input" id="contact">
-               <button class="button_without_border" id="Reset" type="button">Delete</button>
+ <!--              <button class="button_without_border" id="Reset" type="button">Delete</button>  -->
                 <button id="save" class="blue_button" type="submit">Save</button>
                 <input type="button" value="Add new" id="contact_button" onclick="addItems();"><br>
             </div>
